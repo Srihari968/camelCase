@@ -1,5 +1,6 @@
 package com.example.camelcasetestt;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -26,6 +27,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 
@@ -43,10 +46,21 @@ private ActivityMainBinding binding;
         setContentView(R.layout.activity_main);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
+
+
         TextView tv = (TextView)findViewById(R.id.textView);
         Button viewBookings = (Button)findViewById(R.id.viewResBookings);
         user u1 = new user(getApplicationContext());
         Button tt = (Button)findViewById(R.id.tt);
+        Button up = (Button)findViewById(R.id.upload);
+        Button down = (Button)findViewById(R.id.download);
+
+
+
+
+        Button book = (Button) findViewById(R.id.book);
+
 
 
 
@@ -56,11 +70,8 @@ private ActivityMainBinding binding;
         File database = new File("/data/data/com.example.camelcasetestt/databases/IITDHResourcesApp.db");
         final AmazonS3 s3 = new AmazonS3Client(new BasicAWSCredentials(getString(R.string.S3AcsessCode), getString(R.string.S3SecretCode)));
         TransferUtility tu = new TransferUtility(s3,getApplicationContext());
-        //TransferObserver to = tu.download("camlecasetest","IITDHResources.db",database);
-        Button up = (Button)findViewById(R.id.upload);
-        Button down = (Button)findViewById(R.id.download);
+       // TransferObserver to = tu.download("camlecasetest","IITDHResources.db",database);
 
-        Button book = (Button) findViewById(R.id.book);
         ImageButton prof=(ImageButton)findViewById(R.id.prof);
 
         tv.setText("Hello "+mydb.userName(u1.getUid()));
@@ -83,6 +94,7 @@ private ActivityMainBinding binding;
                         if(state.equals(TransferState.COMPLETED))
                         {
                             Toast.makeText(MainActivity.this, "Upload Completed", Toast.LENGTH_SHORT).show();
+                            moveTaskToBack(true);
                         }
                     }
 

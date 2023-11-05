@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class selectStartDate extends AppCompatActivity {
@@ -31,6 +32,7 @@ public class selectStartDate extends AppCompatActivity {
         TimePicker tp = (TimePicker) findViewById(R.id.time);
         Button b = (Button)findViewById(R.id.button);
         mydb =new DataClass(this);
+        LocalDateTime sdt;
         cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -46,14 +48,41 @@ public class selectStartDate extends AppCompatActivity {
                 String srid = cintent.getStringExtra("id");
                 int resourceid = cintent.getIntExtra("rid",1);
                 int rid = Integer.parseInt(srid);
-                mydb.insertSDate(Integer.parseInt(srid),date[0]+" "+tp.getHour()+":"+tp.getMinute());
+                String hr = Integer.toString(tp.getHour());
+                String min = Integer.toString(tp.getMinute());
+                if(hr.length() == 1)
+                    hr = "0"+hr;
+                if(min.length()==1)
+                    min = "0"+min;
+
+                String cdt = date[0]+" "+hr+":"+min;
+                int ta=1;
 
 
-                Intent intent = new Intent(getApplicationContext(),selectEDate.class);
-                intent.putExtra("id",rid);
 
 
-                startActivity(intent);
+
+                if(ta==1)
+                {
+                    if(cdt == null)
+                        cdt = " ";
+                    mydb.insertSDate(Integer.parseInt(srid),cdt);
+
+
+                    Intent intent = new Intent(getApplicationContext(),selectEDate.class);
+                    intent.putExtra("id",rid);
+
+
+                    startActivity(intent);
+
+                }
+                else Toast.makeText(selectStartDate.this, "Resource Occupied at this time", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
 
             }
         });

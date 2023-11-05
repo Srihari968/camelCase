@@ -29,7 +29,7 @@ public class newUser extends AppCompatActivity {
         EditText roll = (EditText) findViewById(R.id.rno);
         EditText email = (EditText) findViewById(R.id.email);
         AutoCompleteTextView batchesTV=(AutoCompleteTextView) findViewById(R.id.batch);
-        String batch[]=new String[]{"2023","2024","2025","2026","2027","2028"};
+        String batch[]=new String[]{"2019","2020","2021","2022","2023","2024","2025","2026","2027","2028"};
         ArrayAdapter<String> batches = new ArrayAdapter<>(newUser.this, android.R.layout.simple_list_item_1,batch);
         batchesTV.setAdapter(batches);
         AutoCompleteTextView branchesTV = (AutoCompleteTextView)findViewById(R.id.branch);
@@ -67,7 +67,7 @@ public class newUser extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(newUser.this, "User Already Exists", Toast.LENGTH_SHORT).show();
-                    int id = mydb.IDfromRNO(roll.getText().toString());
+                    int id = mydb.IDfromRNO(roll.getText().toString().toUpperCase());
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(newUser.this);
                     SharedPreferences.Editor edit = sharedPreferences.edit();
                     edit.putInt("uid",id);

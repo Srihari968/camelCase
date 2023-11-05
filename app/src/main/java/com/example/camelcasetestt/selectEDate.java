@@ -32,6 +32,14 @@ public class selectEDate extends AppCompatActivity {
         b.setText("NEXT");
 
         String date[] =new String[1];
+
+        String hr = Integer.toString(tp.getHour());
+        String min = Integer.toString(tp.getMinute());
+        if(hr.length() == 1)
+            hr = "0"+hr;
+        if(min.length()==1)
+            min = "0"+min;
+
         cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -40,12 +48,25 @@ public class selectEDate extends AppCompatActivity {
             }
         });
 
+
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent cintent = getIntent();
+                String cdt;
 
-                mydb.insertEDate(id,date[0]+" "+tp.getHour()+":"+tp.getMinute());
+                String hr = Integer.toString(tp.getHour());
+                String min = Integer.toString(tp.getMinute());
+                if(hr.length() == 1)
+                    hr = "0"+hr;
+                if(min.length()==1)
+                    min = "0"+min;
+
+                 cdt = date[0]+" "+hr+":"+min;
+
+
+
+                mydb.insertEDate(id,cdt);
                 mydb.insertRemarks(id,rem.getText().toString());
                 Intent intent = new Intent(getApplicationContext(),targetUsers.class);
                 intent.putExtra("id",id);

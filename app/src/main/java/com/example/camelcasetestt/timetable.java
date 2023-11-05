@@ -25,7 +25,9 @@ public class timetable extends AppCompatActivity {
         Cursor res = mydb.targetSearch(sstring);
         res.moveToFirst();
         String as[] = new String[res.getCount()];
-        as[0] = "Name | Resource | sdate | edate";
+        if(as.length>=1) {
+            as[0] = "Name | Resource | sdate | edate";
+        }
         int index=1;
 
         while(res.moveToNext() && index<=res.getCount())

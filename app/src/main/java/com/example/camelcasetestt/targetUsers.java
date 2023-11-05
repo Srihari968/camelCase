@@ -25,6 +25,8 @@ public class targetUsers extends AppCompatActivity {
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 mydb.insertTarget(id,targ.getText().toString());
 
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);

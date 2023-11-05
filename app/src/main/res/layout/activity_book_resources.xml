@@ -24,29 +24,25 @@
 
         <AutoCompleteTextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:id="@+id/resource"
             android:textSize="32dp"
+            android:hint="Enter Resource Name"
 
             ></AutoCompleteTextView>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="horizontal">
+
             <Button
                 android:id="@+id/sdate"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
                 android:text="Select Start Date"></Button>
 
-        </LinearLayout>
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:id="@+id/add"
             android:text="ADD NEW RESOURCE"></Button>
 
