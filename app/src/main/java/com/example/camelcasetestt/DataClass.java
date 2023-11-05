@@ -297,6 +297,20 @@ public class DataClass extends SQLiteOpenHelper {
             return null;
     }
 
+    Cursor targetSearch(String s)
+    {
+        Cursor res  = db.rawQuery("SELECT  uid,rid,sdate,edate FROM bookings WHERE Target like ?",new String[]{"%"+s+"%"});
+        if(res!=null)
+        {
+            res.moveToFirst();
+            return res;
+
+        }
+        else
+            return null;
+
+    }
+
 
 
 
