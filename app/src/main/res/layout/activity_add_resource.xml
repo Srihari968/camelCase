@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddResource">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Resource" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Name"
+            />
+
+        <EditText
+            android:id="@+id/loc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Location " />
+
+        <RadioGroup
+            android:id="@+id/type"
+            android:layout_width="match_parent"
+            android:layout_height="304dp">
+
+            <RadioButton
+                android:id="@+id/sp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:checked="false"
+                android:text="Sports"></RadioButton>
+
+            <RadioButton
+                android:id="@+id/cr"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:checked="true"
+                android:text="Classroom"></RadioButton>
+
+            <RadioButton
+                android:id="@+id/lab"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:checked="false"
+                android:text="Lab Equipment"></RadioButton>
+
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SUBMIT" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
